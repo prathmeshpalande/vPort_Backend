@@ -3,6 +3,7 @@ package com.virtual.portable.server.service;
 import com.virtual.portable.server.model.Credentials;
 import com.virtual.portable.server.model.DummyUsers;
 import com.virtual.portable.server.model.GeneralResponseObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import se.vidstige.jadb.JadbException;
 
@@ -14,6 +15,7 @@ import java.security.NoSuchAlgorithmException;
 @Service
 public class LoginService {
 
+    @Autowired
     private DummyUsers dummyUsers;
 
 
@@ -48,7 +50,7 @@ public class LoginService {
     public GeneralResponseObject verifyCredentials(Credentials credentials) {
 
         boolean isExistUser = (dummyUsers.getUsers().get(credentials.getUserName()) != null) ?
-                dummyUsers.getUsers().get(credentials.getUserName())
+                dummyUsers.getUsers().get(credentials.getUserName()).getCredentials().getPassword()
                         .equals(credentials.getPassword()) &&
                         dummyUsers.getUsers().get(credentials.getUserName()).getSessionKey() == null : false;
 

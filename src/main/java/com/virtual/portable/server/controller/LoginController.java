@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import se.vidstige.jadb.JadbException;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 
 @RestController
 public class LoginController {
@@ -17,7 +18,7 @@ public class LoginController {
     LoginService loginService;
 
     @PostMapping("/login")
-    public boolean getCredentials(@RequestBody Credentials credentials) throws IOException, JadbException {
+    public boolean getCredentials(@RequestBody Credentials credentials) throws IOException, JadbException, NoSuchAlgorithmException {
         return loginService.processCredentials(credentials);
     }
 

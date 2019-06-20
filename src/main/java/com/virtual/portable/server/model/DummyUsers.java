@@ -1,9 +1,11 @@
 package com.virtual.portable.server.model;
 
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 
+@Component
 public class DummyUsers implements InitializingBean {
     HashMap<String, User> users;
 
