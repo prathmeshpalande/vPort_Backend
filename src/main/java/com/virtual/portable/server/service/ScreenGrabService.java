@@ -17,13 +17,13 @@ public class ScreenGrabService {
 
     public byte[] grabScreen() throws IOException, JadbException {
 
-//        JadbConnection jadbConnection = new JadbConnection();
-//        List<JadbDevice> devices = jadbConnection.getDevices();
-//
-//        JadbDevice device = devices.get(0);
-//
-//        device.executeShell("screencap -p /sdcard/screencap.png");
-//        device.execute("pull /sdcard/screencap.png");
+        JadbConnection jadbConnection = new JadbConnection();
+        List<JadbDevice> devices = jadbConnection.getDevices();
+
+        JadbDevice device = devices.get(0);
+
+        device.executeShell("screencap -p /sdcard/screencap.png");
+        device.execute("pull /sdcard/screencap.png");
 
 
 //        ADBExecutor.executeADBCommand("powershell.exe adb shell screencap -p /sdcard/screencap.png");
@@ -33,14 +33,14 @@ public class ScreenGrabService {
 
 //        return getByteArray(new File("screencap.png"));
 
-        System.out.println("Reading Image File");
+//        System.out.println("Reading Image File");
         BufferedImage bImage = ImageIO.read(new File("screencap.png"));
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         ImageIO.write(bImage, "png", bos );
         byte [] data = bos.toByteArray();
 
 //        return IOUtils.toByteArray(in);
-        System.out.println("Converted to byte array, returning");
+//        System.out.println("Converted to byte array, returning");
         return data;
     }
 
