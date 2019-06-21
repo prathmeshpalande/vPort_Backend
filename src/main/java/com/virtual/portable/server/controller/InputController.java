@@ -20,8 +20,10 @@ public class InputController {
     @PostMapping("/post_coordinates")
     public GeneralResponseObject acceptCoordinates(@RequestBody TouchCoordinates touchCoordinates) throws IOException, JadbException {
 
+        System.out.println("Received Coos:" + touchCoordinates.getX_coor() + ", " + touchCoordinates.getY_coor());
         GeneralResponseObject generalResponseObject = touchService.processCoordinates(touchCoordinates);
 
+        System.out.println("Touch Simulated Successfully!");
         return generalResponseObject;
 
     }
